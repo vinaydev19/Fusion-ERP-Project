@@ -23,6 +23,7 @@ import ChangeEmailVerification from "./dashboard/ChangeEmailVerification";
 import Sales from "./dashboard/Sales";
 import ProtectedRoute from "@/components/dashboard/ProtectedRoute";
 import OtherUser from "./dashboard/OtherUser";
+import NotFound from "./NotFound";
 
 function Body() {
   const router = createBrowserRouter([
@@ -74,6 +75,7 @@ function Body() {
             },
             { path: "profile", element: <Profile /> },
             { path: "other-users", element: <OtherUser /> },
+            { path: "*", element: <NotFound /> }
           ]
         },
 
