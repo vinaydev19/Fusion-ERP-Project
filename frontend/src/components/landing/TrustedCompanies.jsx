@@ -1,15 +1,16 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import image from "../../assets/logo.jpg"
+import GMR from "../../assets/GMR.png"
+import VR from "../../assets/VR.png"
+import TTS from "../../assets/TTS.jpg"
 
 const companies = [
-    { name: "TechCorp", logo: image },
-    { name: "Innovate Inc", logo: image },
-    { name: "Global Systems", logo: image },
-    { name: "Future Tech", logo: image },
-    { name: "Smart Solutions", logo: image },
-    { name: "Apex Industries", logo: image },
+    { name: "TechCorp", logo: GMR },
+    { name: "Innovate Inc", logo: VR },
+    { name: "Global Systems", logo: TTS },
 ]
+
 
 export default function TrustedCompanies() {
     const ref = useRef(null)
@@ -54,11 +55,11 @@ export default function TrustedCompanies() {
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center"
+                    className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8 items-center"
                 >
                     {companies.map((company, index) => (
                         <motion.div key={index} variants={itemVariants} className="flex justify-center">
-                            <div className="w-32 h-16 relative grayscale hover:grayscale-0 transition-all duration-300">
+                            <div className="w-50 h-30 relative grayscale hover:grayscale-0 transition-all duration-300">
                                 <img
                                     src={company.logo || "/placeholder.svg"}
                                     alt={`${company.name} logo`}

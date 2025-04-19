@@ -267,6 +267,7 @@ function Invoices() {
       products: updatedProducts,
     }))
   }
+  
 
 
   // api calling
@@ -313,12 +314,13 @@ function Invoices() {
     try {
       // 🔥 Prepare products with subtotal
       const preparedProducts = invoiceForm.products.map((product) => ({
-        productMongodbId: product.productMongodbId,
+        productMongodbId: product._id,
         productId: product.productId,
         productName: product.productName,
         sellingPrice: product.sellingPrice,
         quantity: product.quantity,
-        subtotal: product.sellingPrice * product.quantity,    // ✅ Add subtotal calculation here
+        subtotal: product.sellingPrice * product.quantity,    
+        // ✅ Add subtotal calculation here
       }));
 
       // 🔥 Calculate invoice subtotal (sum of all product subtotals)
@@ -326,9 +328,7 @@ function Invoices() {
         (acc, product) => acc + product.subtotal,
         0
       );
-
-
-
+      
 
       if (isEditMode) {
         // Update existing invoice
@@ -354,6 +354,9 @@ function Invoices() {
         toast.success(res.data.message || "Invoice updated successfully!");
       } else {
         // Create new invoice
+
+        console.log(preparedProducts);
+        
         const res = await axios.post(`${INVOICES_API_END_POINT}/create-invoice`, {
           invoiceNumber: invoiceForm.invoiceNumber,
           dateOfIssue: invoiceForm.dateOfIssue,

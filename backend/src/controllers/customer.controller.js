@@ -6,6 +6,9 @@ import { Customer } from "../models/customer.model.js";
 
 const createCustomerItem = asyncHandler(async (req, res) => {
 
+    console.log(req.body);
+    
+
     const {
         customerId,
         fullName,
@@ -24,7 +27,6 @@ const createCustomerItem = asyncHandler(async (req, res) => {
             email,
             phoneNumber,
             address,
-            notes
         ].some((field) => !field || field.trim() === "") ||
         !purchaseHistory || !Array.isArray(purchaseHistory) ||
         purchaseHistory.some(item => !item.saleId || !item.saleItem || !item.salesDate || item.totalAmount === undefined)

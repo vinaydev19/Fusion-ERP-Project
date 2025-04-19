@@ -55,8 +55,6 @@ import toast from "react-hot-toast"
 import { getRefresh } from "@/redux/customerSlice"
 import Loading from "@/components/commen/Loading"
 
-
-
 function Customer() {
   // State for customers data and search
   const [customersData, setCustomersData] = useState([])
@@ -176,6 +174,9 @@ function Customer() {
     }
   }, [allSales])
   useGetSales()
+
+
+  
 
   useEffect(() => {
     if (allCustomers && allCustomers.AllCustomers) {

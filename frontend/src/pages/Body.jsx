@@ -43,13 +43,13 @@ function Body() {
       path: "login",
       element: <Login />,
     },
-    { path: "login/email-verification", element: <EmailVerification /> },
+    { path: "email-verification", element: <EmailVerification /> },
     {
-      path: "login/reset-password-verification",
+      path: "reset-password-verification",
       element: <ResetPassVerification />,
     },
     {
-      path: "login/reset-password-verification/reset-password",
+      path: "reset-password-verification/reset-password",
       element: <ResetPassword />,
     },
     {

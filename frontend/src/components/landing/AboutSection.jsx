@@ -1,7 +1,7 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { CheckCircle } from "lucide-react"
-import image from "../../assets/logo.jpg"
+import image from "../../assets/Dashboard.png"
 
 export default function AboutSection() {
     const ref = useRef(null)
@@ -56,8 +56,8 @@ export default function AboutSection() {
 
                     {/* Right side - Image/Illustration */}
                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : {}}
+                        initial={{ opacity: 10, x: 50 }}
+                        animate={isInView ? { opacity: 5, x: 0 } : {}}
                         transition={{ duration: 0.5, delay: 0.3 }}
                         className="w-full lg:w-1/2"
                     >

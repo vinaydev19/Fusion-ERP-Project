@@ -2,34 +2,37 @@ import { useState, useRef, useEffect } from "react"
 import { motion, useInView } from "framer-motion"
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import GMR from "../../assets/GMR.png"
+import VR from "../../assets/VR.png"
+import TTS from "../../assets/TTS.jpg"
 
 const testimonials = [
     {
         id: 1,
         content:
-            "Fusion ERP has transformed how we manage our business operations. The integrated modules have eliminated data silos and improved our decision-making process significantly.",
-        author: "Sarah Johnson",
-        role: "CEO",
-        company: "TechNova Solutions",
-        avatar: "/placeholder.svg?height=100&width=100",
+            "Fusion ERP has completely transformed the way we manage our operations. From centralized data management to real-time business insights, everything we need is now at our fingertips. It has made our metal trading processes faster, more organized, and far more efficient.",
+            author: "Ramnaresh Vishwakarma",
+        role: "Owner",
+        company: "Galaxy Metal Recyclers",
+        avatar: GMR,
     },
     {
         id: 2,
         content:
-            "The customer management module is exceptional. We've improved our customer retention by 35% since implementing Fusion ERP. The interface is intuitive and our team adapted quickly.",
-        author: "Michael Chen",
-        role: "Operations Director",
-        company: "Global Retail Inc.",
-        avatar: "/placeholder.svg?height=100&width=100",
+            "Managing a transport business involves handling a lot of moving parts. Fusion ERP has helped us streamline our business processes, reduce operational costs, and improve decision-making. It's an essential part of our growth journey.",
+            author: "Gaurav Pandey",
+        role: "Owner",
+        company: "Total Transport Solutions",
+        avatar: TTS,
     },
     {
         id: 3,
         content:
-            "As a growing business, we needed a solution that could scale with us. Fusion ERP has been the perfect fit, allowing us to add modules as we expand without disrupting our operations.",
-        author: "Emily Rodriguez",
-        role: "CFO",
-        company: "Innovate Manufacturing",
-        avatar: "/placeholder.svg?height=100&width=100",
+            "Fusion ERP is the backbone of our daily operations. It has enhanced our productivity, simplified our finance and sales management, and given us powerful real-time insights to make better decisions. Highly recommended for any business looking to scale.",
+        author: "Ashok Vishwakarma",
+        role: "Owner",
+        company: "Vishwakarma Enterprises",
+        avatar: VR,
     },
 ]
 
@@ -133,8 +136,8 @@ export default function TestimonialsSection() {
                                 key={index}
                                 onClick={() => setCurrentIndex(index)}
                                 className={`w-3 h-3 rounded-full transition-colors duration-300 ${currentIndex === index
-                                        ? "bg-blue-500"
-                                        : "bg-gray-300 dark:bg-gray-700 hover:bg-blue-300 dark:hover:bg-blue-800"
+                                    ? "bg-blue-500"
+                                    : "bg-gray-300 dark:bg-gray-700 hover:bg-blue-300 dark:hover:bg-blue-800"
                                     }`}
                                 aria-label={`Go to testimonial ${index + 1}`}
                             ></button>
