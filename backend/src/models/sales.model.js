@@ -5,7 +5,6 @@ const saleSchema = new Schema(
     saleId: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     saleItem: {
@@ -60,5 +59,8 @@ const saleSchema = new Schema(
   },
   { timestamps: true }
 );
+
+saleSchema.index({ userId: 1, saleId: 1 }, { unique: true });
+
 
 export const Sale = mongoose.model("Sale", saleSchema);

@@ -46,7 +46,7 @@ const createInvoice = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All required fields must be provided");
     }
 
-    const invoiceNumberIsUnique = await Invoice.findOne({ invoiceNumber })
+    const invoiceNumberIsUnique = await Invoice.findOne({ invoiceNumber, userId: req.user._id  })
 
     if (invoiceNumberIsUnique) {
         throw new ApiError(401, "invoice number must be unique")

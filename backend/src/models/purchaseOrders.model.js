@@ -39,7 +39,6 @@ const purchaseSchema = new Schema(
     supplierId: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     supplierName: {
@@ -93,5 +92,8 @@ const purchaseSchema = new Schema(
   },
   { timestamps: true }
 );
+
+purchaseSchema.index({ userId: 1, purchaseId: 1 }, { unique: true });
+
 
 export const Purchase = mongoose.model("Purchase", purchaseSchema);

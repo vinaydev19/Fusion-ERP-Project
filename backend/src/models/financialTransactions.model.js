@@ -73,4 +73,8 @@ const financialSchema = new Schema(
   { timestamps: true }
 );
 
+
+financialSchema.index({ userId: 1, transactionId: 1 }, { unique: true });
+
+
 export const Financial = mongoose.model("Financial", financialSchema);

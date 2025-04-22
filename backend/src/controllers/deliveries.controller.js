@@ -44,19 +44,10 @@ const createDeliveryProductItem = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All required fields must be provided");
     }
 
-    const deliveryIdIsUnique = await Delivery.findOne({ deliveryId })
+    const deliveryIdIsUnique = await Delivery.findOne({ deliveryId, userId: req.user._id  })
 
     if (deliveryIdIsUnique) {
         throw new ApiError(401, "Delivery Id must be unique")
-    }
-
-    
-
-
-    const orderNumberIsUnique = await Delivery.findOne({ orderNumber })
-
-    if (orderNumberIsUnique) {
-        throw new ApiError(401, "Order Number must be unique")
     }
 
     const delivery = await Delivery.create({

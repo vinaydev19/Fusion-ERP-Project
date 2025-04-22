@@ -4,11 +4,15 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
+
 
 function ResetPassword() {
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -76,29 +80,46 @@ function ResetPassword() {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="Password">Password</label>
-          <input
-            type="password"
-            placeholder="Enter your Password"
-            required
-            className="outline-none rounded-xl px-3 py-2 road border-2"
-            id="Password"
-            name="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          ></input>
+          <div className="relative">
+            <input
+              type={showPassword ? "text" : "password"}
+              placeholder="Enter your Password"
+              required
+              className="outline-none rounded-xl px-3 py-2 road border-2 w-full"
+              id="Password"
+              name="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <span
+              onClick={() => setShowPassword((prev) => !prev)}
+              className="absolute right-3 top-3 cursor-pointer text-sm text-blue-700"
+            >
+              {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </span>
+          </div>
         </div>
+
         <div className="flex flex-col gap-2">
           <label htmlFor="confirmPassword">Confirm Password</label>
-          <input
-            type="password"
-            placeholder="Enter your Confirm Password"
-            required
-            className="outline-none rounded-xl px-3 py-2 road border-2"
-            id="confirmPassword"
-            name="confirmPassword"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          ></input>
+          <div className="relative">
+            <input
+              type={showConfirmPassword ? "text" : "password"}
+              placeholder="Enter your Confirm Password"
+              required
+              className="outline-none rounded-xl px-3 py-2 road border-2 w-full"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <span
+              onClick={() => setShowConfirmPassword((prev) => !prev)}
+              className="absolute right-3 top-3 cursor-pointer text-sm text-blue-700"
+            >
+              {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+            </span>
+          </div>
         </div>
         {isLoading ? (
           <button

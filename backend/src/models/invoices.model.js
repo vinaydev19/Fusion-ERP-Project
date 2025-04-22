@@ -101,4 +101,7 @@ const InvoiceSchema = new Schema({
   timestamps: true,
 });
 
+InvoiceSchema.index({ userId: 1, invoiceNumber: 1 }, { unique: true });
+
+
 export const Invoice = mongoose.model("Invoice", InvoiceSchema);

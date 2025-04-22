@@ -42,7 +42,6 @@ const deliverySchema = new Schema(
     orderNumber: {
       type: String,
       required: true,
-      unique: true,
     },
     customerName: {
       type: String,
@@ -101,5 +100,9 @@ const deliverySchema = new Schema(
   },
   { timestamps: true }
 );
+
+
+deliverySchema.index({ userId: 1, deliveryId: 1 }, { unique: true });
+
 
 export const Delivery = mongoose.model("Delivery", deliverySchema);

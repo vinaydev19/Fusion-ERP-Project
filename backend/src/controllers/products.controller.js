@@ -9,9 +9,6 @@ import { Product } from "../models/products.model.js";
 
 const createProductItem = asyncHandler(async (req, res) => {
 
-  console.log("Incoming request body:", req.body);
-
-
   const {
     productId,
     productName,
@@ -41,7 +38,7 @@ const createProductItem = asyncHandler(async (req, res) => {
     throw new ApiError(401, "All fields are required");
   }
 
-  const productIdIsUnique = await Product.findOne({ productId })
+  const productIdIsUnique = await Product.findOne({ productId, userId: req.user._id });
 
   if (productIdIsUnique) {
     throw new ApiError(401, "Product Id must be unique")
@@ -78,7 +75,6 @@ const createProductItem = asyncHandler(async (req, res) => {
   return res.status(200).json(new ApiResponse(200, { product }, "Product added successfully"));
 });
 
-
 const getAllProduct = asyncHandler(async (req, res) => {
   const userId = req.user._id;
   const AllProducts = await Product.find({ userId });
@@ -89,7 +85,6 @@ const getAllProduct = asyncHandler(async (req, res) => {
       new ApiResponse(200, { AllProducts }, "fetch all products successfully")
     );
 });
-
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const productMongodbId = req.params.productMongodbId;

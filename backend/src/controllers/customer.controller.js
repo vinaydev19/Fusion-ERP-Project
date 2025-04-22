@@ -34,7 +34,7 @@ const createCustomerItem = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All required fields must be provided");
     }
 
-    const customerIdIsUnique = await Customer.findOne({ customerId })
+    const customerIdIsUnique = await Customer.findOne({ customerId, userId: req.user._id  })
 
     if (customerIdIsUnique) {
         throw new ApiError(401, "Customer Id must be unique")

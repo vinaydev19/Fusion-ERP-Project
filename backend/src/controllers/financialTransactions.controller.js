@@ -36,7 +36,7 @@ const createFinancialItem = asyncHandler(async (req, res) => {
     }
 
 
-    const transactionIdIsUnique = await Financial.findOne({ transactionId })
+    const transactionIdIsUnique = await Financial.findOne({ transactionId, userId: req.user._id  })
 
     if (transactionIdIsUnique) {
         throw new ApiError(401, "Transaction Id must be unique")

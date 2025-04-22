@@ -9,7 +9,6 @@ const purchaseHistory = new Schema(
     saleId: {
       type: String,
       required: true,
-      unique: true,
       trim: true,
     },
     saleItem: {
@@ -71,5 +70,9 @@ const customerSchema = new Schema(
   },
   { timestamps: true }
 );
+
+customerSchema.index({ userId: 1, customerId: 1 }, { unique: true });
+
+
 
 export const Customer = mongoose.model("Customer", customerSchema);

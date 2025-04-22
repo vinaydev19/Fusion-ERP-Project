@@ -38,7 +38,7 @@ const createEmployeeItem = asyncHandler(async (req, res) => {
     }
 
 
-    const employeeIdIsUnique = await Employee.findOne({ employeeId })
+    const employeeIdIsUnique = await Employee.findOne({ employeeId, userId: req.user._id  })
 
     if (employeeIdIsUnique) {
         throw new ApiError(401, "Employee Id must be unique")

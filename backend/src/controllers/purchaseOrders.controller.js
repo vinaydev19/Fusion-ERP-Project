@@ -46,12 +46,6 @@ const createPurchaseItem = asyncHandler(async (req, res) => {
         throw new ApiError(401, "purchase Id must be unique")
     }
 
-    const supplierIdIsUnique = await Purchase.findOne({ supplierId, userId: req.user._id })
-
-    if (supplierIdIsUnique) {
-        throw new ApiError(401, "purchase Id must be unique")
-    }
-
 
     const purchase = await Purchase.create({
         purchaseId,

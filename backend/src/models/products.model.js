@@ -5,7 +5,6 @@ const productSchema = new Schema(
     productId: {
       type: String,
       required: true,
-      unique: true,
     },
     productName: {
       type: String,
@@ -77,6 +76,8 @@ const productSchema = new Schema(
   },
   { timestamps: true }
 );
+
+productSchema.index({ userId: 1, productId: 1 }, { unique: true });
 
 
 export const Product = mongoose.model("Product", productSchema);
