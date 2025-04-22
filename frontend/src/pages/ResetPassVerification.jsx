@@ -28,7 +28,7 @@ function ResetPassVerification() {
         }
       );
       console.log(res);
-      navigate("/login/reset-password-verification/reset-password");
+      navigate("/reset-password-verification/reset-password");
       setIsLoading(false);
       toast.success(res.data.message);
     } catch (error) {
@@ -84,7 +84,7 @@ function ResetPassVerification() {
       </form>
       <div className="flex gap-1 pb-5">
         <p>Already have an account?</p>
-        <Link to="/login" className="text-blue-700 hover:underline">
+        <Link to="login" className="text-blue-700 hover:underline">
           Login
         </Link>
       </div>

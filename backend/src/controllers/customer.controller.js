@@ -79,19 +79,6 @@ const getAllCustomer = asyncHandler(async (req, res) => {
         );
 });
 
-const getOneCustomer = asyncHandler(async (req, res) => {
-    const customerMongodbId = req.params.customerMongodbId;
-
-    const customer = await Customer.findById(customerMongodbId);
-
-    if (!customer) {
-        throw new ApiError(404, "Customer not found");
-    }
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, { customer }, "Fetch one customer successfully"));
-});
 
 const deleteCustomer = asyncHandler(async (req, res) => {
     const customerMongodbId = req.params.customerMongodbId;
@@ -168,7 +155,6 @@ const updateCustomerDetails = asyncHandler(async (req, res) => {
 export {
     createCustomerItem,
     getAllCustomer,
-    getOneCustomer,
     deleteCustomer,
     updateCustomerDetails
 };

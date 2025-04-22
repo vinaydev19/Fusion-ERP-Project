@@ -90,19 +90,6 @@ const getAllProduct = asyncHandler(async (req, res) => {
     );
 });
 
-const getOneProduct = asyncHandler(async (req, res) => {
-  const productMongodbId = req.params.productMongodbId;
-
-  const product = await Product.findById(productMongodbId);
-
-  if (!product) {
-    throw new ApiError(404, "product not found");
-  }
-
-  return res
-    .status(200)
-    .json(new ApiResponse(200, { product }, "fetch one product successfully"));
-});
 
 const deleteProduct = asyncHandler(async (req, res) => {
   const productMongodbId = req.params.productMongodbId;
@@ -273,7 +260,6 @@ const updateProductDetails = asyncHandler(async (req, res) => {
 export {
   createProductItem,
   getAllProduct,
-  getOneProduct,
   deleteProduct,
   updateProductDetails,
   updateProductImage,

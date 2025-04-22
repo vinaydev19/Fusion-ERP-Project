@@ -1,4 +1,4 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,16 +7,79 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import emailjs from "emailjs-com"
+import toast from "react-hot-toast";
+
+
 
 export default function ContactSection() {
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, amount: 0.3 })
+    useEffect(() => {
+        emailjs.init("jzI4CqvZC1XHKzccQ")
+    }, [])
+
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        interest: "demo",
+        message: "",
+    })
+
+    const handleChange = (e) => {
+        const { id, value } = e.target
+        setFormData({ ...formData, [id]: value })
+    }
+
+    const handleRadioChange = (value) => {
+        setFormData({ ...formData, interest: value })
+    }
+    
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // Handle form submission
-        console.log("Form submitted")
+
+        const { name, email, message, phone, company, interest } = formData
+
+        if (!name.trim() || !email.trim() || !message.trim()) {
+            toast.error("Please fill in all the required fields.")
+            return
+        }
+
+        const params = {
+            full_name: name.trim(),
+            email: email.trim(),
+            phone: phone.trim(),
+            company: company.trim(),
+            interest,
+            message: message.trim(),
+        }
+
+        toast.promise(
+            emailjs.send("service_7gezaeq", "template_k39aly6", params),
+            {
+                loading: "Sending message...",
+                success: "Your message was sent successfully!",
+                error: "There was an error sending your message. Please try again later.",
+            }
+        ).then(() => {
+            setFormData({
+                name: "",
+                email: "",
+                phone: "",
+                company: "",
+                interest: "demo",
+                message: "",
+            })
+        }).catch((err) => {
+            console.error("Email sending error:", err)
+        })
     }
+
+
 
     return (
         <section id="contact" className="py-20 bg-gray-50 dark:bg-slate-900">
@@ -66,8 +129,7 @@ export default function ContactSection() {
                                     <div>
                                         <h4 className="font-medium">Office</h4>
                                         <p className="text-gray-600 dark:text-gray-400">
-                                            123 Business Avenue, Suite 500
-                                            <br />
+                                       
                                             Bhiwandi, Maharashtra
                                         </p>
                                     </div>
@@ -101,52 +163,46 @@ export default function ContactSection() {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <Label htmlFor="name">Full Name</Label>
-                                            <Input id="name" placeholder="John Doe" required />
+                                            <Input id="name" value={formData.name} onChange={handleChange} placeholder="John Doe" required />
                                         </div>
                                         <div className="space-y-2">
                                             <Label htmlFor="email">Email</Label>
-                                            <Input id="email" type="email" placeholder="fusionerp01@gmail.com" required />
+                                            <Input id="email" type="email" value={formData.email} onChange={handleChange} placeholder="fusionerp01@gmail.com" required />
                                         </div>
                                     </div>
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div className="space-y-2">
                                             <Label htmlFor="phone">Phone (Optional)</Label>
-                                            <Input id="phone" placeholder="+91 9579353237" />
+                                            <Input id="phone" value={formData.phone} onChange={handleChange} placeholder="+91 9579353237" />
                                         </div>
                                         <div className="space-y-2">
                                             <Label htmlFor="company">Company (Optional)</Label>
-                                            <Input id="company" placeholder="Your Company" />
+                                            <Input id="company" value={formData.company} onChange={handleChange} placeholder="Your Company" />
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
                                         <Label>What are you interested in?</Label>
-                                        <RadioGroup defaultValue="demo" className="flex flex-col space-y-1">
+                                        <RadioGroup value={formData.interest} onValueChange={handleRadioChange} className="flex flex-col space-y-1">
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="demo" id="demo" />
-                                                <Label htmlFor="demo" className="cursor-pointer">
-                                                    Schedule a Demo
-                                                </Label>
+                                                <Label htmlFor="demo" className="cursor-pointer">Schedule a Demo</Label>
                                             </div>
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="support" id="support" />
-                                                <Label htmlFor="support" className="cursor-pointer">
-                                                    Technical Support
-                                                </Label>
+                                                <Label htmlFor="support" className="cursor-pointer">Technical Support</Label>
                                             </div>
                                             <div className="flex items-center space-x-2">
                                                 <RadioGroupItem value="other" id="other" />
-                                                <Label htmlFor="other" className="cursor-pointer">
-                                                    Other
-                                                </Label>
+                                                <Label htmlFor="other" className="cursor-pointer">Other</Label>
                                             </div>
                                         </RadioGroup>
                                     </div>
 
                                     <div className="space-y-2">
                                         <Label htmlFor="message">Message</Label>
-                                        <Textarea id="message" placeholder="Tell us about your business needs..." rows={5} required />
+                                        <Textarea id="message" value={formData.message} onChange={handleChange} placeholder="Tell us about your business needs..." rows={5} required />
                                     </div>
 
                                     <Button

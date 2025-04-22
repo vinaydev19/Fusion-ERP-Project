@@ -636,7 +636,7 @@ const PurchaseOrders = () => {
               <Button type="button" variant="outline" onClick={() => setIsAddFormOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={selectedProducts.length === 0}>
+              <Button type="submit">
                 {isEditMode ? "Update Purchase" : "Add Purchase"}
               </Button>
             </DialogFooter>

@@ -80,19 +80,6 @@ const getAllFinancial = asyncHandler(async (req, res) => {
         );
 });
 
-const getOneFinancial = asyncHandler(async (req, res) => {
-    const financialMongodbId = req.params.financialMongodbId;
-
-    const financial = await Financial.findById(financialMongodbId);
-
-    if (!financial) {
-        throw new ApiError(401, "financial not found");
-    }
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, { financial }, "fetch one financial successfully"));
-});
 
 const deleteFinancial = asyncHandler(async (req, res) => {
     const financialMongodbId = req.params.financialMongodbId;
@@ -180,7 +167,6 @@ const updateFinancialDetails = asyncHandler(async (req, res) => {
 export {
     createFinancialItem,
     getAllFinancial,
-    getOneFinancial,
     deleteFinancial,
     updateFinancialDetails
 };

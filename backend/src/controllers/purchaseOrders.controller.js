@@ -88,7 +88,6 @@ const getAllPurchase = asyncHandler(async (req, res) => {
         );
 });
 
-
 const deletePurchase = asyncHandler(async (req, res) => {
     const purchaseMongodbId = req.params.purchaseMongodbId;
 

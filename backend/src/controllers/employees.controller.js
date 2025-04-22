@@ -80,19 +80,6 @@ const getAllEmployee = asyncHandler(async (req, res) => {
         );
 });
 
-const getOneEmployee = asyncHandler(async (req, res) => {
-    const employeeMongodbId = req.params.employeeMongodbId;
-
-    const employee = await Employee.findById(employeeMongodbId);
-
-    if (!employee) {
-        throw new ApiError(401, "employee not found");
-    }
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, { employee }, "fetch one employee successfully"));
-});
 
 const deleteEmployee = asyncHandler(async (req, res) => {
     const employeeMongodbId = req.params.employeeMongodbId;
@@ -181,7 +168,6 @@ const updateEmployeeDetails = asyncHandler(async (req, res) => {
 export {
     createEmployeeItem,
     getAllEmployee,
-    getOneEmployee,
     deleteEmployee,
     updateEmployeeDetails,
 };

@@ -266,6 +266,9 @@ const resetPasswordEmailVerfication = asyncHandler(async (req, res) => {
   await user.save({ validateBeforeSave: false });
   await resetPasswordEmail(user.email, token);
 
+  console.log(token);
+  
+
   return res
     .status(200)
     .json(

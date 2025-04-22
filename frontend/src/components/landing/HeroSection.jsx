@@ -134,9 +134,7 @@ export default function HeroSection() {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="text-lg">
-              Watch Demo
-            </Button>
+
           </div>
         </motion.div>
 

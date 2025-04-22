@@ -575,7 +575,7 @@ function Invoices() {
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold">Invoice Management</h1>
           <Button onClick={handleAddInvoice} className="flex items-center gap-1">
-            <Plus className="h-4 w-4" />
+            <Plus className="h-4 w-4" /> Add New Invoice
           </Button>
         </div>
 

@@ -68,19 +68,6 @@ const getAllSale = asyncHandler(async (req, res) => {
         );
 });
 
-const getOneSale = asyncHandler(async (req, res) => {
-    const saleMongodbId = req.params.saleMongodbId;
-
-    const sale = await Sale.findById(saleMongodbId);
-
-    if (!sale) {
-        throw new ApiError(404, "Sale not found");
-    }
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, { sale }, "Fetched one sale successfully"));
-});
 
 const deleteSale = asyncHandler(async (req, res) => {
     const saleMongodbId = req.params.saleMongodbId;
@@ -171,7 +158,6 @@ const updateSaleDetails = asyncHandler(async (req, res) => {
 export {
     createSaleItem,
     getAllSale,
-    getOneSale,
     deleteSale,
     updateSaleDetails
 };

@@ -96,19 +96,6 @@ const getAllDeliveryProduct = asyncHandler(async (req, res) => {
         );
 });
 
-const getOneDeliveryProduct = asyncHandler(async (req, res) => {
-    const deliveryMongodbId = req.params.deliveryMongodbId;
-
-    const delivery = await Delivery.findById(deliveryMongodbId);
-
-    if (!delivery) {
-        throw new ApiError(404, "Delivery not found");
-    }
-
-    return res
-        .status(200)
-        .json(new ApiResponse(200, { delivery }, "Fetched one delivery successfully"));
-});
 
 const deleteDeliveryProduct = asyncHandler(async (req, res) => {
     const deliveryMongodbId = req.params.deliveryMongodbId;
@@ -200,7 +187,6 @@ const updateDeliveryProductDetails = asyncHandler(async (req, res) => {
 export {
     createDeliveryProductItem,
     getAllDeliveryProduct,
-    getOneDeliveryProduct,
     deleteDeliveryProduct,
     updateDeliveryProductDetails,
 };

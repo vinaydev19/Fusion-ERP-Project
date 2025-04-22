@@ -2,8 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/ApiError.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { Invoice } from "../models/invoices.model.js";
-import { User } from "../models/user.model.js"
-import generateInvoicePDF from "../utils/pdfGenerator.js";
+
 
 
 
@@ -180,26 +179,10 @@ const updateInvoice = asyncHandler(async (req, res) => {
         );
 });
 
-const downloadInvoice = asyncHandler(async (req, res) => {
-    const invoiceMongodbId = req.params.invoiceMongodbId;
-    const invoice = await Invoice.findById(invoiceMongodbId);
-
-    if (!invoice) {
-        throw new ApiError(404, "invoice is not found");
-    }
-
-    const pdfBuffer = generateInvoicePDF(invoice);
-    res.set({
-        "Content-Type": "application/pdf",
-        "Content-Disposition": "attachment; filename=invoice.pdf",
-    });
-    res.send(Buffer.from(pdfBuffer));
-})
 
 export {
     createInvoice,
     getAllInvoice,
     deleteInvoice,
     updateInvoice,
-    downloadInvoice
 };

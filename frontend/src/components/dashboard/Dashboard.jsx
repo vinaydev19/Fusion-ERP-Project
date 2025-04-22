@@ -150,10 +150,7 @@ function Dashboard() {
         lowStock.length > 0
           ? lowStock
           : [
-            { productId: "P1001", productName: "Wireless Headphones", quantity: 5, warehouse: "Main" },
-            { productId: "P1002", productName: "USB-C Cable", quantity: 8, warehouse: "Main" },
-            { productId: "P1003", productName: "Ergonomic Keyboard", quantity: 3, warehouse: "East" },
-            { productId: "P1004", productName: "Wireless Mouse", quantity: 7, warehouse: "West" },
+
           ],
       )
     }
