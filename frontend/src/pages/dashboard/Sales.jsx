@@ -206,9 +206,9 @@ function Sales() {
 
   // Submit new sale
   const handleAddSale = async (e) => {
-    e.preventDefault()
-
-
+    e.preventDefault();
+    setIsLoading(true);
+  
     try {
       const res = await axios.post(`${SALES_API_END_POINT}/create-sale`, {
         saleId: formData.saleId,
@@ -226,30 +226,22 @@ function Sales() {
           "Content-Type": "application/json"
         },
         withCredentials: true
-      })
-      console.log("id", formData.saleItem._id);
+      });
+  
       console.log(res);
       toast.success(res.data.message);
-      dispatch(getRefresh());
+  
+      dispatch(getRefresh());  // this will reload correct data from backend
+      setIsAddSaleModalOpen(false);
+      resetFormData();
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
+      console.log(`Error in handleAddSale:`, error);
     } finally {
       setIsLoading(false);
     }
-
-    const newSale = {
-      ...formData,
-      sellingPrice: Number.parseFloat(formData.sellingPrice),
-      quantity: Number.parseInt(formData.quantity),
-      totalAmount: Number.parseFloat(formData.totalAmount),
-    }
-
-    setSalesData((prev) => [...prev, newSale])
-    setIsAddSaleModalOpen(false)
-    resetFormData()
-  }
+  };
+  
 
   // Open view details modal
   const handleViewDetails = (sale) => {
