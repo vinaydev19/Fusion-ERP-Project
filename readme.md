@@ -1,90 +1,122 @@
-# Fusion ERP Web Application
+# 🌐 Fusion ERP Web Application
 
-Fusion ERP is a full-stack Enterprise Resource Planning (ERP) system designed for small to medium-sized businesses to efficiently manage core business processes including sales, purchases, inventory, finance, deliveries, invoicing, customer relations, and employee management.
+**Fusion ERP** is a full-stack Enterprise Resource Planning (ERP) system designed for small to medium-sized businesses. It helps manage essential business processes including:
 
-## 📦 Project Structure
+> 🛒 Sales • 📦 Purchases • 📊 Inventory • 💰 Finance • 🚚 Deliveries • 🧾 Invoicing • 🤝 Customer Relations • 👨‍💼 Employee Management
 
+---
+
+## 📁 Project Structure
+
+```
 vinaydev19-fusion-erp-project/
 ├── backend/        # Node.js/Express REST API
 └── frontend/       # React.js (Vite) SPA
+```
+
+---
 
 ## 🚀 Features
 
 ### ✅ Backend (Node.js, Express, MongoDB)
-- RESTful API with full CRUD support  
-- Authentication (JWT-based)  
-- Role-based access control  
-- File upload (Cloudinary integration)  
-- Email services (registration, verification, password reset)  
-- Modular MVC architecture  
-- Prebuilt modules:  
-  - User management  
-  - Product and inventory management  
-  - Sales and purchase orders  
-  - Customer and delivery tracking  
-  - Invoice management  
-  - Financial transactions  
-  - Employee records  
+- Full RESTful API (CRUD)
+- JWT-based Authentication
+- Role-Based Access Control
+- File Uploads via Cloudinary
+- Email Services: registration, verification, reset
+- Modular MVC Architecture
+- Prebuilt Modules:
+  - 👤 User Management  
+  - 📦 Product & Inventory  
+  - 🛍️ Sales & Purchase Orders  
+  - 👥 Customer & Delivery Tracking  
+  - 🧾 Invoice Management  
+  - 💵 Financial Transactions  
+  - 🧑‍💼 Employee Records
 
 ### ✅ Frontend (React + Vite)
-- Responsive UI built with reusable components  
-- Dashboard with role-based protected routes  
-- Form validation and state management (Redux)  
-- Live data fetch via custom hooks  
-- Components:  
-  - Dashboard, Forms, Tables, Charts  
-  - Landing page (Marketing sections)  
-  - UI Library (Buttons, Tabs, Dialogs, etc.)
+- Fully Responsive UI
+- Role-Based Protected Routes
+- State Management with Redux Toolkit
+- Form Validation (React Hook Form / Custom)
+- Real-time Data via Custom Hooks
+- Components:
+  - 📊 Dashboard
+  - 📝 Forms
+  - 📋 Tables
+  - 📈 Charts
+  - 🖼️ Landing Page (Marketing)
+  - 🧩 UI Library (Buttons, Tabs, Dialogs)
 
-## 🛠️ Technologies Used
+---
 
-### Backend:
+## ⚙️ Tech Stack
+
+### 🧠 Backend
 - Node.js  
 - Express.js  
-- MongoDB & Mongoose  
-- JWT & Bcrypt  
+- MongoDB + Mongoose  
+- JWT + Bcrypt  
 - Nodemailer  
-- Cloudinary  
-- Multer  
-- dotenv  
+- Cloudinary + Multer  
+- dotenv
 
-### Frontend:
-- React.js (with Vite)  
+### 🎨 Frontend
+- React.js + Vite  
 - Redux Toolkit  
 - React Router  
 - Axios  
-- Custom hooks  
-- ShadCN/UI style component library
+- Custom Hooks  
+- ShadCN/UI (Style Component Library)
+
+---
 
 ## ⚙️ Setup Instructions
 
 ### 1. Clone the Repository
+
+```bash
 git clone https://github.com/vinaydev19/fusion-erp-project.git
 cd fusion-erp-project
+```
 
 ### 2. Backend Setup
+
+```bash
 cd backend
 npm install
+```
 
 Create a `.env` file with the following:
-PORT=5000  
-MONGODB_URI=mongodb://localhost:27017  
-ACCESS_TOKEN_SECRET=your_jwt_access_secret  
-REFRESH_TOKEN_SECRET=your_jwt_refresh_secret  
-CLOUDINARY_CLOUD_NAME=your_cloudinary_name  
-CLOUDINARY_API_KEY=your_key  
-CLOUDINARY_API_SECRET=your_secret  
-EMAIL_USER=your_email  
-EMAIL_PASS=your_password  
+
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017
+ACCESS_TOKEN_SECRET=your_jwt_access_secret
+REFRESH_TOKEN_SECRET=your_jwt_refresh_secret
+CLOUDINARY_CLOUD_NAME=your_cloudinary_name
+CLOUDINARY_API_KEY=your_key
+CLOUDINARY_API_SECRET=your_secret
+EMAIL_USER=your_email
+EMAIL_PASS=your_password
 CORS_ORIGIN=http://localhost:3000
+```
 
 Run the server:
+
+```bash
 npm run dev
+```
 
 ### 3. Frontend Setup
+
+```bash
 cd ../frontend
 npm install
 npm run dev
+```
+
+---
 
 ## 📂 API Routes Overview
 
@@ -99,6 +131,8 @@ npm run dev
 | Deliveries        | /api/v1/deliveries     |
 | Customers         | /api/v1/customers      |
 | Invoices          | /api/v1/invoices       |
+
+---
 
 ## 📄 License
 
