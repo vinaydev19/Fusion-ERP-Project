@@ -70,7 +70,6 @@ function Profile() {
         },
         { withCredentials: true },
       )
-      console.log(res)
       toast.success(res.data.message)
       setIsEditing(false)
     } catch (error) {
@@ -102,7 +101,6 @@ function Profile() {
       )
 
       toast.success(res.data.message)
-      console.log(res)
 
       // Update UI with new profile pic
       setProfileData((prevData) => ({

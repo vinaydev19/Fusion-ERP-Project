@@ -14,11 +14,9 @@ const useGetSales = () => {
                 const res = await axios.get(`${SALES_API_END_POINT}/get-all-sale`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllsales(res.data.data))
             } catch (error) {
                 console.error("Error fetching sales:", error);
-                console.log(error);
             }
         }
         fetchSales()

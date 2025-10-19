@@ -4,10 +4,6 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { Purchase } from "../models/purchaseOrders.model.js";
 
 const createPurchaseItem = asyncHandler(async (req, res) => {
-
-    console.log(req.body);
-    
-
     const {
         purchaseId,
         supplierId,
@@ -98,10 +94,6 @@ const deletePurchase = asyncHandler(async (req, res) => {
 
 const updatePurchaseDetails = asyncHandler(async (req, res) => {
     const purchaseDocsId = req.params.purchaseMongodbId;
-
-    
-    console.log(req.body);
-
 
     const {
         purchaseId,

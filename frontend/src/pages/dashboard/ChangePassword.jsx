@@ -42,13 +42,10 @@ function ChangePassword() {
           withCredentials: true,
         }
       );
-      console.log(res);
       setIsLoading(false);
       toast.success(res.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(`error on register page || ${error}`);
-      console.log(error);
       setIsLoading(false);
     }
   };

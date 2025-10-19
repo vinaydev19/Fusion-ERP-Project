@@ -16,12 +16,10 @@ const useGetMyProfile = () => {
             withCredentials: true,
           }
         );
-        console.log(res);
         dispatch(getMyProfile(res.data.data));
 
       } catch (error) {
         console.error("Error fetching profile:", error);
-        console.log(error);
       }
     };
 

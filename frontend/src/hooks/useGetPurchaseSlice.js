@@ -14,11 +14,9 @@ const useGetPurchases = () => {
                 const res = await axios.get(`${PURCHASES_API_END_POINT}/get-all-purchase`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllPurchases(res.data.data))
             } catch (error) {
                 console.error("Error fetching deliveries:", error);
-                console.log(error);
             }
         }
         fetchPurchases()

@@ -297,13 +297,11 @@ function FinancialTransactions() {
         },
         withCredentials: true
       })
-      console.log(res);
       toast.success(res.data.message);
       dispatch(getRefresh());
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
+
     } finally {
       setIsLoading(false);
     }
@@ -388,7 +386,6 @@ function FinancialTransactions() {
         withCredentials: true,
       });
 
-      console.log("Updating transaction ID:", formData._id);
       toast.success(res.data.message);
       dispatch(getRefresh());
 
@@ -422,7 +419,6 @@ function FinancialTransactions() {
       const res = await axios.delete(`${FINANCIALS_API_END_POINT}/delete-financial/${selectedTransaction._id}`, {
         withCredentials: true
       });
-      console.log("id", selectedTransaction._id);
       toast.success(res.data.message);
       dispatch(getRefresh());
       setTransactionsData((prev) => prev.filter((transaction) => transaction._id !== selectedTransaction._id))

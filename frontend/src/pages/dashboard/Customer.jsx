@@ -215,7 +215,6 @@ function Customer() {
           withCredentials: true
         }
       )
-      console.log(res);
       toast.success(res.data.message);
       dispatch(getRefresh());
 
@@ -225,8 +224,6 @@ function Customer() {
 
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -277,7 +274,6 @@ function Customer() {
           customer._id === updatedCustomer._id ? updatedCustomer : customer
         )
       );
-      console.log("update cus", res);
       toast.success(res.data.message || "Customer updated successfully.");
       setIsEditModalOpen(false);
     } catch (error) {

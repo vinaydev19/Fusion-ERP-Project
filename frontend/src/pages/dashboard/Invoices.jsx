@@ -354,8 +354,6 @@ function Invoices() {
         toast.success(res.data.message || "Invoice updated successfully!");
       } else {
         // Create new invoice
-
-        console.log(preparedProducts);
         
         const res = await axios.post(`${INVOICES_API_END_POINT}/create-invoice`, {
           invoiceNumber: invoiceForm.invoiceNumber,

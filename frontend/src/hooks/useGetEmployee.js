@@ -14,11 +14,9 @@ const useGetEmployees = () => {
                 const res = await axios.get(`${EMPLOYEES_API_END_POINT}/get-all-employee`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllEmployees(res.data.data))
             } catch (error) {
                 console.error("Error fetching employees:", error);
-                console.log(error);
             }
         }
         fetchEmployees()

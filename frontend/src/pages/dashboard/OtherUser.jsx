@@ -24,7 +24,6 @@ function OtherUser() {
         const res = await axios.get(`${USER_API_END_POINT}/other-users`, {
           withCredentials: true,
         })
-        console.log("Fetched users:", res.data)
         const fetchedUsers = res.data.data.users || []
         setUsers(fetchedUsers)
         setFilteredUsers(fetchedUsers)

@@ -4,7 +4,6 @@ const asyncHandler = (fn) => async (...args) => {
   try {
     await fn(...args);
   } catch (error) {
-    console.log(error);
     if (!error.statusCode) {
       error = new ApiError(500, "Internal Server Error");
     }

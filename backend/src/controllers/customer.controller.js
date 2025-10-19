@@ -4,11 +4,7 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { Customer } from "../models/customer.model.js";
 
 
-const createCustomerItem = asyncHandler(async (req, res) => {
-
-    console.log(req.body);
-    
-
+const createCustomerItem = asyncHandler(async (req, res) => {    
     const {
         customerId,
         fullName,

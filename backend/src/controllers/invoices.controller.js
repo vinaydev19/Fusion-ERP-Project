@@ -7,10 +7,6 @@ import { Invoice } from "../models/invoices.model.js";
 
 
 const createInvoice = asyncHandler(async (req, res) => {
-
-    console.log(req.body);
-
-
     const {
         invoiceNumber,
         dateOfIssue,
@@ -106,8 +102,6 @@ const deleteInvoice = asyncHandler(async (req, res) => {
 
 const updateInvoice = asyncHandler(async (req, res) => {
     const invoiceDocsId = req.params.invoiceMongodbId;
-
-    console.log(req.body);
 
     const {
         invoiceNumber,

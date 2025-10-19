@@ -36,15 +36,12 @@ function Login() {
           withCredentials: true,
         }
       );
-      console.log(res);
       navigate("/dashboard");
       setIsLoading(false);
       dispatch(getUser(res.data.data));
       toast.success(res.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(`error on register page || ${error}`);
-      console.log(error);
       setIsLoading(false);
     }
   };

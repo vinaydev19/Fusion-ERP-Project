@@ -13,10 +13,8 @@ const useGetOtherUsers = () => {
                 const res = await axios.get(`${USER_API_END_POINT}/other-users`,{
                     withCredentials:true
                 });
-                console.log(res);
                 dispatch(getOtherUsers(res.data.users));
             } catch (error) {
-                console.log(error);
             }
         }
         fetchOtherUsers();

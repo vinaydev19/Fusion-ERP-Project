@@ -14,11 +14,9 @@ const useGetDeliveries = () => {
                 const res = await axios.get(`${DELIVERIES_API_END_POINT}/get-all-delivery`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllDeliveries(res.data.data))
             } catch (error) {
                 console.error("Error fetching deliveries:", error);
-                console.log(error);
             }
         }
         fetchDeliveries()

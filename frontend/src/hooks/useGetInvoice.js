@@ -14,11 +14,9 @@ const useGetInvoices = () => {
                 const res = await axios.get(`${INVOICES_API_END_POINT}/get-all-invoice`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllInvoices(res.data.data))
             } catch (error) {
                 console.error("Error fetching invoice:", error);
-                console.log(error);
             }
         }
         fetchInvoices()

@@ -322,7 +322,6 @@ function Employees() {
       );
 
       toast.success(res.data.message || "Employee updated successfully");
-      console.log("Updated Employee ID:", formData._id);
 
       // ✅ Correctly Update UI After Successful API Response
       setEmployeesData((prev) =>
@@ -361,7 +360,6 @@ function Employees() {
       });
 
       toast.success(res.data.message || "Employee deleted successfully");
-      console.log("id", selectedEmployee._id);
 
       // Update state only after successful deletion
       setEmployeesData((prev) => prev.filter((employee) => employee._id !== selectedEmployee._id));

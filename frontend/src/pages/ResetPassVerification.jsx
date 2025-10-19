@@ -27,14 +27,11 @@ function ResetPassVerification() {
           withCredentials: true,
         }
       );
-      console.log(res);
       navigate("/reset-password-verification/reset-password");
       setIsLoading(false);
       toast.success(res.data.message);
     } catch (error) {
       toast.error(error.response.data.message);
-      console.log(`error on register page || ${error}`);
-      console.log(error);
       setIsLoading(false);
     }
   };

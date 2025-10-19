@@ -122,9 +122,6 @@ const updateProductImage = asyncHandler(async (req, res) => {
     throw new ApiError(404, "Product not found");
   }
 
-  console.log(cloudinaryProductImage);
-  console.log(cloudinaryProductImage.url);
-
   const productImage = await Product.findByIdAndUpdate(
     productMongodbId,
     {

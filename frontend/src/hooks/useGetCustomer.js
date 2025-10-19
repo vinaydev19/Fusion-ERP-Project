@@ -12,11 +12,9 @@ const useGetCustomers = () => {
         const fetchCustomers = async () => {
             try {
                 const res = await axios.get(`${CUSTOMERS_API_END_POINT}/get-all-customer`, { withCredentials: true })
-                console.log(res);
                 dispatch(getAllCustomers(res.data.data))
             } catch (error) {
                 console.error("Error fetching customer:", error);
-                console.log(error);
             }
         }
         fetchCustomers()

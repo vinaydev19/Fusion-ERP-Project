@@ -151,9 +151,7 @@ function Products() {
         }
       );
 
-      console.log(res);
       toast.success(res.data.message);
-      console.log("🔍 Request Headers:", res.config.headers);
       // Update state only after success
       setProducts((prevProducts) => [...prevProducts, res.data.product]);
       setIsAddProductModalOpen(false);
@@ -161,8 +159,7 @@ function Products() {
       dispatch(getRefresh())
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
+
     } finally {
       setIsLoading(false);
     }
@@ -198,8 +195,6 @@ function Products() {
           withCredentials: true,
         }
       );
-      console.log("id", formData._id);
-      console.log(res);
       toast.success(res.data.message);
       dispatch(getRefresh()); // Refresh product list from API
     } catch (error) {
@@ -227,15 +222,12 @@ function Products() {
           withCredentials: true,
         }
       );
-      console.log(res);
       toast.success(res.data.message);
       dispatch(getRefresh())
       // setProducts(products.filter((product) => product.productId !== id))
 
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
     } finally {
       setIsLoading(false);
     }

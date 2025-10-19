@@ -14,11 +14,9 @@ const useGetProducts = () => {
                 const res = await axios.get(`${PRODUCTS_API_END_POINT}/get-all-product`, {
                     withCredentials: true,
                 })
-                console.log(res);
                 dispatch(getAllProducts(res.data.data))
             } catch (error) {
                 console.error("Error fetching products:", error);
-                console.log(error);
             }
         }
         fetchProducts()

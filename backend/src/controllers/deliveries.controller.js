@@ -22,10 +22,6 @@ const createDeliveryProductItem = asyncHandler(async (req, res) => {
         totalPrice,
     } = req.body;
 
-    console.log("req", req.body);
-
-
-
     if (
         [
             deliveryId,

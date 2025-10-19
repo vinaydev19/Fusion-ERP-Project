@@ -228,7 +228,6 @@ function Sales() {
         withCredentials: true
       });
   
-      console.log(res);
       toast.success(res.data.message);
   
       dispatch(getRefresh());  // this will reload correct data from backend
@@ -236,7 +235,6 @@ function Sales() {
       resetFormData();
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleAddSale:`, error);
     } finally {
       setIsLoading(false);
     }
@@ -350,7 +348,6 @@ function Sales() {
       const res = await axios.delete(`${SALES_API_END_POINT}/delete-sale/${selectedSale._id}`, {
         withCredentials: true
       });
-      console.log("id", selectedSale._id);
       toast.success(res.data.message);
       dispatch(getRefresh());
       // Remove the deleted sale from local state

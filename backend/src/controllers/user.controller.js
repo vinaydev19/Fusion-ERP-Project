@@ -76,7 +76,6 @@ const userRegister = asyncHandler(async (req, res) => {
 
   const profilePicLocalPath = req.file?.path;
 
-  console.log(req.files);
 
   if (!profilePicLocalPath) {
     throw new ApiError(400, "please upload profile pic");
@@ -259,15 +258,11 @@ const resetPasswordEmailVerfication = asyncHandler(async (req, res) => {
     let char = Math.floor(Math.random() * code.length);
     token += code[char];
   }
-  console.log(token);
 
   user.resetPasswordToken = token;
   user.resetPasswordTokenExpiresAt = Date.now() + 24 * 60 * 60 * 1000;
   await user.save({ validateBeforeSave: false });
-  await resetPasswordEmail(user.email, token);
-
-  console.log(token);
-  
+  await resetPasswordEmail(user.email, token);  
 
   return res
     .status(200)

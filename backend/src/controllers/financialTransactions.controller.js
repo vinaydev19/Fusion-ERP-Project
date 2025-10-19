@@ -86,8 +86,6 @@ const deleteFinancial = asyncHandler(async (req, res) => {
 
     const financial = await Financial.findByIdAndDelete(financialMongodbId);
 
-    console.log(financial);
-
     return res
         .status(200)
         .json(new ApiResponse(200, {}, "Financial record deleted successfully"));

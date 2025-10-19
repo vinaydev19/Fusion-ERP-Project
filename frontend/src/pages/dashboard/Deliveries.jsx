@@ -312,13 +312,12 @@ function Deliveries() {
         },
         withCredentials: true
       })
-      console.log(res);
+
       toast.success(res.data.message);
       dispatch(getRefresh());
     } catch (error) {
       toast.error(error.response?.data?.message || "Something went wrong");
-      console.log(`Error in handleSubmit: ${error}`);
-      console.log(error);
+
     } finally {
       setIsLoading(false);
     }
