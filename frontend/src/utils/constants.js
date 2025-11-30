@@ -9,3 +9,4 @@ export const DELIVERIES_API_END_POINT = `${API_BASE_URL}/deliveries`;
 export const CUSTOMERS_API_END_POINT = `${API_BASE_URL}/customers`;
 export const INVOICES_API_END_POINT = `${API_BASE_URL}/invoices`;
 export const PURCHASES_API_END_POINT = `${API_BASE_URL}/purchases`;
+
