@@ -1,4 +1,4 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+export const API_BASE_URL = "http://98.93.75.254:8000/api/v1"
 
 export const USER_API_END_POINT = `${API_BASE_URL}/users`;
 export const PRODUCTS_API_END_POINT = `${API_BASE_URL}/products`;
