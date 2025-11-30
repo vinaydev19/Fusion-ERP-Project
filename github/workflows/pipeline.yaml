@@ -1,0 +1,48 @@
+name: fusion-erp-ci-cd-pipeline
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Docker hub login
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build backend image
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-backend:latest ./backend
+
+    - name: Build frontend image
+      run: |
+        docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-frontend:latest ./frontend
+
+    - name: Push backend image
+      run: |
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-backend:latest
+
+    - name: Push frontend image
+      run: |
+        docker push ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-frontend:latest
+
+    - name: SSH into EC2 and deploy
+      uses: appleboy/ssh-action@v0.1.10
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USER }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /home/ubuntu/fusion-erp
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-backend:latest
+          docker pull ${{ secrets.DOCKERHUB_USERNAME }}/fusion-erp-frontend:latest
+          docker compose down
+          docker compose up -d --force-recreate
